@@ -205,22 +205,22 @@ void Timer1Interrupt(void) interrupt 3
 		switch (beep_lv)
 		{
 		case 0:
-			if (beep_frq == 1) {BEEP_PIN = !BEEP_PIN; beep_frq = 0;}
+			if (beep_frq >= 1) {BEEP_PIN = !BEEP_PIN; beep_frq = 0;}
 			break;
 		case 1:
-			if (beep_frq == 5) {BEEP_PIN = !BEEP_PIN; beep_frq = 0;}
+			if (beep_frq >= 5) {BEEP_PIN = !BEEP_PIN; beep_frq = 0;}
 			break;
 		case 2:
-			if (beep_frq == 10) {BEEP_PIN = !BEEP_PIN; beep_frq = 0;}
+			if (beep_frq >= 10) {BEEP_PIN = !BEEP_PIN; beep_frq = 0;}
 			break;
 		case 3:
-			if (beep_frq == 15) {BEEP_PIN = !BEEP_PIN; beep_frq = 0;}
+			if (beep_frq >= 15) {BEEP_PIN = !BEEP_PIN; beep_frq = 0;}
 			break;
 		case 4:
-			if (beep_frq == 20) {BEEP_PIN = !BEEP_PIN; beep_frq = 0;}
+			if (beep_frq >= 20) {BEEP_PIN = !BEEP_PIN; beep_frq = 0;}
 			break;
 		default:
-			if (beep_frq == 20) {BEEP_PIN = !BEEP_PIN; beep_frq = 0;}
+			if (beep_frq >= 20) {BEEP_PIN = !BEEP_PIN; beep_frq = 0;}
 			break;
 		}
 		break;
