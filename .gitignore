@@ -1,0 +1,7 @@
+*.lst
+*.m51
+*.uvgui.*
+*.obj
+*.lnp
+*.build_log.*
+ultrasonic
