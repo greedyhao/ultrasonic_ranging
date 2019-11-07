@@ -50,8 +50,7 @@ void uw_sen_start(void);
 void main(void){
 	unsigned long tmp = 0;
 	float distance_measurement, value;
-	P2 = 0x00;
-	P1 = seg_table[0];
+	P2 = 0x0f;
 	P2M1 = 0x40; //0100 0000
 	P2M0 = 0x30; //0011 0000
 	init_timer();
@@ -74,14 +73,15 @@ void main(void){
 		
 		num = (int)(distance_measurement*10)%10000;
 
-		if	 (num < 800) beep_frq = (num - 300)/25; /* (x - 300)/500*20  (level 20) */
-		else BEEP_PIN = 0;
-
-		if (num <= 300) beep_frq = 30;
+		// if	 (num < 800) beep_frq = (num - 300)/25; /* (x - 300)/500*20  (level 20) */
+		// else BEEP_PIN = 0;
+		// if (num <= 300) beep_frq = 30;
 
 		// if (num < 800) beep_flag = 1;
 		// else if (num < 300) beep_flag = 2;
 		// else beep_flag = 0;
+
+		ET1 = 1;
 
 		delay_ms(50);
 	}
@@ -187,16 +187,14 @@ void Timer1Interrupt(void) interrupt 3
     TH1 = 0xB8;
     TL1 = 0x00;
     //add your code here!
-
-	// num = 1111;
-	--beep_frq;
+	// --beep_frq;
 	seg_dis(num);
-	if (beep_frq == 0) BEEP_PIN = !BEEP_PIN;
-	if (beep_frq >= 20)
-	{
-		beep_frq++;
-		BEEP_PIN = 1;
-	}
+	// if (beep_frq == 0) BEEP_PIN = !BEEP_PIN;
+	// if (beep_frq >= 20)
+	// {
+	// 	beep_frq++;
+	// 	BEEP_PIN = 1;
+	// }
 
 	// if (beep_flag == 0) BEEP_PIN = 0;
 	// else if (beep_flag == 1) BEEP_PIN = !BEEP_PIN;
