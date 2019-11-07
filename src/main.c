@@ -77,9 +77,9 @@ void main(void){
 		// else BEEP_PIN = 0;
 		// if (num <= 300) beep_frq = 30;
 
-		// if (num < 800) beep_flag = 1;
-		// else if (num < 300) beep_flag = 2;
-		// else beep_flag = 0;
+		if (num < 800 && num > 300) beep_flag = 1;
+		else if (num <= 300) beep_flag = 2;
+		else beep_flag = 0;
 
 		ET1 = 1;
 
@@ -196,9 +196,20 @@ void Timer1Interrupt(void) interrupt 3
 	// 	BEEP_PIN = 1;
 	// }
 
-	// if (beep_flag == 0) BEEP_PIN = 0;
-	// else if (beep_flag == 1) BEEP_PIN = !BEEP_PIN;
-	// else if (beep_flag == 2) BEEP_PIN = 1;
+	switch (beep_flag)
+	{
+	case 0:
+		BEEP_PIN = 0;
+		break;
+	case 1:
+		BEEP_PIN = !BEEP_PIN;
+		break;
+	case 2:
+		BEEP_PIN = 1;
+		break;
+	default:
+		break;
+	}
 
 	time_out++;
 }
